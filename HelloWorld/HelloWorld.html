@@ -11,18 +11,18 @@
 </head>
 <body>
   <div id="reactContainer"></div>
-  <!-- <script>
-    let HelloCompoent = React.createClass({
-      render: function() {
-        return React.createElement('h1', null, 'hello world')
-      }
-    })
-    ReactDOM.render(
-      React.createElement(HelloCompoent, null),
-      document.getElementById('reactContainer')
-    )
-  </script> -->
-    <!--jsx语法-->
+    <!-- <script>
+      let HelloCompoent = React.createClass({
+        render: function() {
+          return React.createElement('h1', null, 'hello world')
+        }
+      })
+      ReactDOM.render(
+        React.createElement(HelloCompoent, null),
+        document.getElementById('reactContainer')
+      )
+    </script> -->
+  <!--jsx语法-->
     <!-- <script type="text/babel">
       let HelloCompoent = React.createClass({
         render: function() {
@@ -32,21 +32,21 @@
       ReactDOM.render(<HelloCompoent/>, document.getElementById('reactContainer')) 
     </script> -->
     <!-- <script type="text/babel">
-    class helloMessage extends React.Component {
-      render() {
-        return (
-          <div>
-            hello {this.props.name}
-          </div>
-        )
+      class HelloMessage extends React.Component {
+        render() {
+          return (
+            <div>
+              hello {this.props.name}
+            </div>
+          )
+        }
       }
-    }
-    ReactDOM.render(
-      <helloMessage name="fabrice" />,
-      document.getElementById('reactContainer')
-    )
+      ReactDOM.render(
+        <HelloMessage name="fabrice" />,
+        document.getElementById('reactContainer')
+      )
     </script> -->
-    <script type="text/babel">
+    <!-- <script type="text/babel">
       let arr = ['1', '2', '3']
       let NumberComponent = React.createClass({
         render: function() {
@@ -63,6 +63,62 @@
         <NumberComponent name="fabrice" />,
         document.getElementById('reactContainer')
       )  
+    </script> -->
+    <!-- <script type="text/babel">
+      let TextBoxComponent = React.createClass({
+        getInitialState: function() {
+          return {enable : false}
+        },
+        handleClick: function(event) {
+          this.setState({enable:!this.state.enable})
+        },
+        render: function() {
+          return (
+            <from>
+              <input type="text" disabled={this.state.enable} />
+              <button onClick={this.handleClick}>change state</button>
+            </from>
+          )
+        }
+      })
+      ReactDOM.render(
+        <TextBoxComponent/>,
+        document.getElementById("reactContainer")
+      )
+    </script> -->
+  <!-- life circle-->
+    <script type="text/babel">
+      let AddCount = React.createClass({
+        getInitialState : function() {
+          console.log('1....getInitialState')
+          return {count: 1}
+        },
+        componentWillMount : function() {
+          console.log('2.....componentWillMount')
+        },
+        componentDidMount : function() {
+          console.log('3.....componentDidMount')          
+        },
+        componentWillUpdate : function() {
+          console.log('4.....componentWillUpdate')
+        },
+        componentDidUpdate : function() {
+          console.log('4.....componentDidUpdate')          
+        },
+        handleClick : function() {
+          this.setState({count : this.state.count+1})
+        },
+        render() {
+          return (
+            <from>
+              {this.state.count}
+              <button onClick={this.handleClick}>add</button>
+            </from>
+          )
+        }
+      })
+
+      ReactDOM.render(<AddCount/>, document.getElementById('reactContainer'))
     </script>
 </body>
 </html>
